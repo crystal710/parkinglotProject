@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+ 
+ <typeAliases>
+ 		<!--  <typeAlias type="kr.co.mlec.board.vo.BoardVO" alias="BoardVO"/>-->
+ 		<typeAlias type="kr.co.mlec.member.vo.MemberVO" alias="MemberVO"/>
+ 		<typeAlias type="kr.co.mlec.parking.vo.ParkingVO" alias="ParkingVO"/>
+ 		<!--  <typeAlias type="kr.co.mlec.reply.vo.ReplyVO" alias="ReplyVO"/>-->
+ 	</typeAliases>
+</configuration>

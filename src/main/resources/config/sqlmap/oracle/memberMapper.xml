@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.dao.MemberDAO">
+ 	<!-- 로그인 -->
+ 	<select id="login" parameterType ="MemberVO" resultType ="MemberVO">
+ 		select id, name, type
+ 			from member
+ 		  where id =#{id} and password =#{password}
+ 	</select>
+ 	
+ 	<!-- 회원가입 -->
+ 	<!-- <insert id= "insert" parameterType="MemberVO">
+ 		insert into member(id, password, name, nickname, )
+ 			values(#{id}, #{password} , #{name}, #{email_id}, #{email_domain} )
+ 	</insert>  -->
+	 
+</mapper>

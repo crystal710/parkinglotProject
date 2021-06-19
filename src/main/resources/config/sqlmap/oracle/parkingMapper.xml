@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="parking.dao.ParkingDAO">
+ 	<!-- 위도 경도 -->
+ 	<select id="location" parameterType ="ParkingVO" resultType ="ParkingVO">
+ 		select placeID, parkingLotName, addr as Addr,roadaddr, latitue as lat, longitude as lng ,opweekly as opWeekly,paymentoption as paymentOpt
+ 		,parkingNormalTime as normalTime ,parkingNormalCharge as normalCharge,payment
+ 			from parkinglot
+ 	</select>
+ 	
+ 	<!-- 전체 주차장 조회 -->
+ 	<select id="selectAll" parameterType ="ParkingVO" resultType ="ParkingVO">
+ 		select placeID, parkingLotName, lotType1,lotType2, addr, roadaddr
+ 			from parkinglot
+ 	</select>
+ 	
+ 	<!-- 주차장 갯수 -->
+ 	<select id="allParkingCount" resultType = "int">
+ 		select count(*) from parkinglot
+
+ 	</select>
+ 	
+ 	<!-- 주차장 상세보기 -->
+	 <select id="detail" parameterType="ParkingVO" resultType="ParkingVO">
+	 	select placeID, parkingLotName, lotType1,lotType2, addr, roadaddr as roadAddr, opweekly as opWeekly,normalstarttime as weekday_start,normalendtime as weekday_end, satstarttime as sat_start, satendtime as sat_end
+    ,holistarttime as holi_start, holiendtime as holi_end,payment, paymentoption as paymentOpt, parkingnormalcharge as normalCharge, onedayparkingcharge as onedayCharge, addcharge as addCharge, monthcharge as monthCharge
+	 		from parkinglot
+	 		where placeID='${placeID}'  
+	 </select>
+	 
+	 <!-- 지역 검색 -->
+	 <select id="searchArea" parameterType = "ParkingVO" resultType ="ParkingVO">
+	 	select placeID, parkingLotName, lotType1,lotType2, addr, roadaddr
+		 from parkinglot where addr like '%' ||  #{keyword} || '%' or roadaddr like'%' ||  #{keyword} || '%'
+	 </select>
+	 <!-- 지역 검색수 -->
+	 <select id="searchAreaCount" parameterType = "ParkingVO" resultType ="int">
+	 	select count(*)
+		 from parkinglot where addr like '%' ||  #{keyword} || '%' or roadaddr like'%' ||  #{keyword} || '%'
+	 </select>
+	 
+	 <!--주차장타입 검색  -->
+	 <select id="searchParkingType" parameterType = "ParkingVO" resultType ="ParkingVO">
+	 	select placeID, parkingLotName, lotType1,lotType2, addr, roadaddr 
+	 		from parkinglot where lotType1 like '%' ||  #{keyword} || '%' 
+	 </select>
+	 <!-- 주차장타입 검색수 -->
+	 <select id="searchParkingTypeCount" parameterType = "ParkingVO" resultType ="int">
+	 	select count(*)
+	 		from parkinglot where lotType1 like '%' ||  #{keyword} || '%'
+	 </select>
+	 
+	 <!-- 주차장이름 검색 -->
+	 <select id="searchName" parameterType = "ParkingVO" resultType ="ParkingVO">
+	 	select * from parkinglot where parkingLotName like '%' ||  #{keyword} || '%'
+	 </select>
+	 <!-- 주차장이름 검색수 -->
+	 <select id="searchNameCount" parameterType = "ParkingVO" resultType ="int">
+	 	select count(*) from parkinglot where parkingLotName like '%' ||  #{keyword} || '%'
+	 </select>
+	 
+	 <!--  무료/유료 검색-->
+	 <select id="searchPayment" parameterType = "ParkingVO" resultType ="ParkingVO">
+	 	select * from parkinglot where payment like '%' ||  #{keyword} || '%'
+	 </select>
+	 <!--  무료/유료 검색수-->
+	 <select id="searchPaymentCount" parameterType = "ParkingVO" resultType ="int">
+	 	select count(*) from parkinglot where payment like '%' ||  #{keyword} || '%'
+	 </select>
+	 
+	 
+	
+</mapper>
