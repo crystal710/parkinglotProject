@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import kr.co.mlec.member.vo.MemberVO;
 import kr.co.mlec.parking.vo.ParkingVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,6 +26,15 @@ public class MyBatisTest {
 	private DataSource ds;
 	
 	
+	
+	@Test
+	public void 회원조회() throws Exception{
+		MemberVO member= sqlSession.selectOne("member.dao.MemberDAO.selectUserById", "user");
+		System.out.println(member);
+	}
+
+	
+	@Ignore
 	@Test
 	public void 검색테스트() throws Exception{
 		List<ParkingVO> list = sqlSession.selectList("parking.dao.ParkingDAO.searchParkingType","민영");

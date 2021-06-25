@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import kr.co.mlec.member.dao.MemberDAO;
+import kr.co.mlec.member.service.MemberService;
+import kr.co.mlec.member.vo.MemberVO;
 import kr.co.mlec.parking.dao.ParkingDAO;
 import kr.co.mlec.parking.service.ParkingService;
 import kr.co.mlec.parking.vo.ParkingVO;
@@ -22,6 +25,24 @@ public class MyProjectTest {
 	
 	@Autowired
 	private ParkingDAO dao;
+	
+	@Autowired
+	private MemberDAO mdao;
+	@Autowired
+	private MemberService mservice;
+	
+	@Test
+	public void sevice_회원조회() throws Exception{
+		MemberVO member = mservice.getUser("user");
+		System.out.println(member);
+	}
+	
+	@Ignore
+	@Test
+	public void 회원조회() throws Exception{
+		MemberVO member = mdao.read("user");
+		System.out.println(member);
+	}
 	
 	@Ignore
 	@Test

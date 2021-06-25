@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
+
 public class MemberVO {
 	@NotBlank(message = "필수항목입니다")
 	private String id;
@@ -19,7 +20,7 @@ public class MemberVO {
 	private String phone2;
 	@NotBlank(message = "필수항목입니다")
 	private String phone3;
-	private String nicname;
+	private String nickname;
 	private String regDate;
 	
 	public MemberVO() {
@@ -30,7 +31,7 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [id=" + id + ", name=" + name + ", password=" + password + ", type=" + type + ", phone1="
-				+ phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", nicname=" + nicname + ", regDate=" + regDate
+				+ phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", nickname=" + nickname + ", regDate=" + regDate
 				+ "]";
 	}
 
@@ -77,11 +78,11 @@ public class MemberVO {
 	public void setPhone3(String phone3) {
 		this.phone3 = phone3;
 	}
-	public String getNicname() {
-		return nicname;
+	public String getNickname() {
+		return nickname;
 	}
-	public void setNicname(String nicname) {
-		this.nicname = nicname;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public String getRegDate() {
 		return regDate;

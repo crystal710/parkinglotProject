@@ -3,6 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+ 	<settings> 
+    <setting name="cacheEnabled" value="false" />
+    <setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
  
  <typeAliases>
  		<!--  <typeAlias type="kr.co.mlec.board.vo.BoardVO" alias="BoardVO"/>-->
@@ -10,4 +15,7 @@
  		<typeAlias type="kr.co.mlec.parking.vo.ParkingVO" alias="ParkingVO"/>
  		<!--  <typeAlias type="kr.co.mlec.reply.vo.ReplyVO" alias="ReplyVO"/>-->
  	</typeAliases>
+ 	
+
+
 </configuration>

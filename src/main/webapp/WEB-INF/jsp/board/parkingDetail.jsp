@@ -71,6 +71,7 @@
 		
 		<form name ="replyForm">
 			댓글 :<input type="text" name ="content" size="50">
+			별점 :
 			이름 :<input type ="text" name ="writer" size="10">
 			<input type ="button" value="댓글추가" id="replyBtn">
 		</form>

@@ -11,9 +11,20 @@
  	</select>
  	
  	<!-- 회원가입 -->
- 	<!-- <insert id= "insert" parameterType="MemberVO">
- 		insert into member(id, password, name, nickname, )
- 			values(#{id}, #{password} , #{name}, #{email_id}, #{email_domain} )
- 	</insert>  -->
+ 	<insert id= "insert" parameterType="MemberVO">
+ 		insert into member(id, password, name, nickname, phone1,phone2,phone3 )
+ 			values(#{id}, #{password} , #{name},#{nickname}, #{phone1}, #{phone2},#{phone3} )
+ 	</insert> 
 	 
+	<!-- 회원조회 -->
+	<select id="selectUserById" parameterType="string" resultType="MemberVO">
+		select id, password, name, nickname, to_char(reg_date, 'yyyy-mm-dd') regDate, phone1, phone2, phone3
+		 from member where id=#{id}
+	</select>
+	
+	<!-- 업데이트 -->
+	<update id="updateUser" parameterType="MemberVO">
+		update member set password=#{password},nickname=#{nickname},phone1=#{phone1},phone2=#{phone2},phone3=#{phone3}
+		where id=#{id}
+	</update>
 </mapper>
