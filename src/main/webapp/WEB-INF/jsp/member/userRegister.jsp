@@ -54,12 +54,9 @@
 								<form:input path="phone1"/><form:errors path="phone1"/> - <form:input path="phone2"/><form:errors path="phone2"/> - <form:input path="phone3"/><form:errors path="phone3"/>	
 							</td>
 					</tr>
-					
-					<tr>
-						<td colspan="2" class="text-center">
-							<button type="submit" >회원가입</button></td>
-					</tr>						
 				</table>
+				<br>
+							<button type="submit" >회원가입</button>			
 			</form:form>
 		</div>
 	</div>

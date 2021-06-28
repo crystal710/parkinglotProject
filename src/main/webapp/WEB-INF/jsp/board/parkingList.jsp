@@ -331,14 +331,14 @@
 	</div>
 	<!-- search{s} -->
 
-		<form action ="searchParkingList" method="post">
+		<form action ="searchParkingList" method="post" align="center">
 			<select name="searchType">
 					<option value="addr">지역</option>
 					<option value="lotType1">주차장 타입</option>
 					<option value="parkingLotName">주차장 이름</option>
 					<option value="payment">주차장 요금</option>
 				</select>
-				<input type="text"name="keyword">
+				<input type="text"name="keyword" style="width: 60%">
 				<input type="submit" value="검색"/>
 		</form>
 

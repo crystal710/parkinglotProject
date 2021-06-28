@@ -14,7 +14,6 @@ function update(){
 	alert("수정되었습니다"); 
 	} 
 </script>
-
 </head>
 <body>
 <header>
@@ -62,11 +61,9 @@ function update(){
 						<input type="text" name="phone1" value="${member.phone1 }"/>-<input type="text" name="phone2" value="${member.phone2}"/>-<input type="text" name="phone3" value="${member.phone3}"/>
 					</td>
 				</tr>
-				<tr>
-				<td colspan="2" class="text-center">
-					<input type="submit" role="button" onclick="javascript:update()" value="수정">
-				</tr>
 			</table>
+			<br>
+					<input type="submit" role="button" onclick="javascript:update()" value="수정">
 			</form>
 	</div>
 </section>

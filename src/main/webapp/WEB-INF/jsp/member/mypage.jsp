@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/layout.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/board.css">
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
+<script>
+	function goUpdate(){
+		location.href="${ pageContext.request.contextPath}/updateUserForm";
+	}
+</script>
 </head>
 <body>
 <header>
@@ -53,10 +58,9 @@
 						${member.regDate }
 					</td>
 				</tr>
-				<tr>
-					<td class="text-center" colspan="2">
-					<a type="button" href="updateUserForm?id=${member.id }">수정</a>
 			</table>
+			<br>
+			<button type="button" onclick="javascript:goUpdate()">수정</button>
 		</h2>
 	</div>
 </section>
