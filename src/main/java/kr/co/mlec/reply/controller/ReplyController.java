@@ -35,7 +35,6 @@ public class ReplyController {
 	public void addReply(ReplyVO replyVO, HttpSession session) {
 		String id=(String)session.getAttribute("id");
 		replyVO.setId(id);
-		System.out.println("ReplyController:reply.replyVO="+ replyVO);
 		service.insertReply(replyVO);
 	}
 
@@ -43,7 +42,6 @@ public class ReplyController {
 	public List<ReplyVO> replyAll(@PathVariable("placeID") String placeID, HttpSession session) throws Exception{
 		
 		List<ReplyVO> replyList = service.selectReplyByBoardNo(placeID);
-		System.out.println("ReplyController:replyAll:replyList= "+ replyList);
 		return replyList;	
 	}
 	

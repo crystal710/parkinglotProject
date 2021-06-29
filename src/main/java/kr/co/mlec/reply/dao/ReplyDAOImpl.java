@@ -26,8 +26,8 @@ public class ReplyDAOImpl implements ReplyDAO {
 		sqlSession.insert("reply.dao.ReplyDAO.insert", replyVO);
 	}
 	@Override
-	public void delete(String placeID) {
-		sqlSession.delete("reply.dao.ReplyDAO.delete", placeID);
+	public void delete(int boardno) {
+		sqlSession.delete("reply.dao.ReplyDAO.delete", boardno);
 	}
 	
 	@Override

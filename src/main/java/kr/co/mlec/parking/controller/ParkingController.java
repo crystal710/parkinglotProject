@@ -74,11 +74,11 @@ public class ParkingController {
 	}
 	
 	@RequestMapping("/board/detail")
-	public String boardByNo(Model model, @RequestParam("placeID") String placeID) {
+	public String boardByNo(@RequestParam("placeID") String placeID , Model model) {
 
 		ParkingVO board = service.detailParking(placeID);
 		
-		ModelAndView mav = new ModelAndView();
+		
 		model.addAttribute("board",board);//
 		return "board/parkingDetail";
 	}

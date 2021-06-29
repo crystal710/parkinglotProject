@@ -9,7 +9,7 @@ public interface ReplyDAO {
 	
 	public void insert(ReplyVO replyVO);
 	
-	public void delete(String placeID);
+	public void delete(int boardno);
 	
 	public ReplyVO read(String placeID);
 	

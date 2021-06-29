@@ -15,10 +15,10 @@
 </script>
 <style>
 #btn{
-    width:70px;
-    background-color: #f8585b;
+     width:70px;
+    background-color: #E6EDF5;
     border: none;
-    color:white;
+    color:#4F76A3;
     padding: 15px 0;
     text-align: center;
     text-decoration: none;
@@ -32,7 +32,7 @@
     display: inline-block;
     padding: 15px 0;
     border:1px;
-    color:#f8585b;
+    color:#4F76A3;
     cursor: pointer;
 }
 </style>

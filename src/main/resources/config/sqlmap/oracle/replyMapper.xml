@@ -11,7 +11,7 @@
 	
 	<!-- 해당게시물 댓글 조회 -->
 	<select id="selectAll" parameterType="ReplyVO" resultType="ReplyVO">
-		select b.placeID as placeID  , b.ranking as ranking , b.review as review , b.reg_date as reg_date , m.nickname as nickname ,b.id as id 
+		select b.boardno as boardno, b.placeID as placeID  , b.ranking as ranking , b.review as review , b.reg_date as reg_date , m.nickname as nickname ,b.id as id 
 			from Board b, Member m
 		where b.placeID= #{placeID} and m.id=b.id
 	</select>
@@ -25,7 +25,7 @@
 	<!--  해당게시물 댓글 삭제 -->
 	<delete id="delete" parameterType="ReplyVO">
 		delete Board
-		where placeID=#{placeID}
+		where boardno=#{boardno}
 	</delete>
  	
 </mapper>

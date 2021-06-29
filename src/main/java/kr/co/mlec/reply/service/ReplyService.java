@@ -8,7 +8,7 @@ public interface ReplyService {
 
 	public void insertReply(ReplyVO replyVO);
 	
-	public void deleteReply(String placeID);
+	public void deleteReply(int boardno);
 	
 	public ReplyVO getUser(String placeID) throws Exception;
 	

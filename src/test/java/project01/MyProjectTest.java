@@ -32,6 +32,20 @@ public class MyProjectTest {
 	@Autowired ReplyDAO rdao;
 	
 	@Test
+	public void 댓글삭제servie() throws Exception{
+		rservice.deleteReply(27);
+		System.out.println("삭제완료");
+	}
+	
+	@Ignore
+	@Test
+	public void 댓글삭제() throws Exception{
+		rdao.delete(26);
+		System.out.println("삭제완료");
+	}
+	
+	@Ignore
+	@Test
 	public void 댓글정보() throws Exception{
 		List<ReplyVO> list = rdao.selectAll("358-2-000001");
 		for(ReplyVO vo : list) {

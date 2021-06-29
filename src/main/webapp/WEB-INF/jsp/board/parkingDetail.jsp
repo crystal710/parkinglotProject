@@ -19,9 +19,9 @@
 	border-left:none; border-right:none; border-bottom 3px solid black;}
 	#replyBtn {
     width:100px;
-    background-color: #f8585b;
+    background-color: #E6EDF5;
     border: none;
-    color:white;
+    color:#4F76A3;
     padding: 15px 0;
     text-align: center;
     text-decoration: none;
@@ -35,14 +35,14 @@
     display: inline-block;
     padding: 15px 0;
     border:1px;
-    color:#f8585b;
+    color:#4F76A3;
     cursor: pointer;
 }
 #golist{
     width:70px;
-    background-color: #f8585b;
+    background-color: #E6EDF5;
     border: none;
-    color:white;
+    color:#4F76A3;
     padding: 15px 0;
     text-align: center;
     text-decoration: none;
@@ -56,7 +56,7 @@
     display: inline-block;
     padding: 15px 0;
     border:1px;
-    color:#f8585b;
+    color:#4F76A3;
     cursor: pointer;
 }
 
@@ -89,7 +89,7 @@
 					data += '&nbsp;&nbsp;&nbsp;' + reply.review+'&nbsp;&nbsp;&nbsp;'+'|' +'</td>'
 					data += '&nbsp;'+"ÆòÁ¡"+'&nbsp;&nbsp;'+ reply.ranking+'|' +'</td>'
 					data += '<td>'+'&nbsp;&nbsp;&nbsp;' + reply.nickname+'&nbsp;&nbsp;&nbsp;'+'|' +'</td>'
-					data+='&nbsp;&nbsp;&nbsp;' +'<button id="golist" onclick="goDelete()">´ñ±Û»èÁ¦</button>'
+					data+='&nbsp;&nbsp;&nbsp;' +'<button id="golist" onclick="goDelete('+reply.boardno+')">´ñ±Û»èÁ¦</button>'
 					data += '</div>'
 					$('#replyList').append(data)
 					
@@ -118,9 +118,9 @@
 	//	}
 	//})
 	
-		function goDelete() {
+		function goDelete(boardno) {
 		if(confirm('´ñ±ÛÀ» »èÁ¦ÇÒ±î¿ä?')){
-			location.href = "${pageContext.request.contextPath}/reply/delete/${board.placeID}"
+			location.href = "${pageContext.request.contextPath}/reply/delete?boardno="+boardno+"&placeid=${board.placeID}";
 		}
 	}
 		

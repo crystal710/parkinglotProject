@@ -14,7 +14,7 @@
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
 <c:url var="getParkingListURL" value="/board/parkingList"></c:url>
 <style>
-		.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+		.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: center;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 		.wrap * {padding: 0;margin: 0;}
 		.wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
 		.wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
@@ -22,7 +22,7 @@
 		.info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
 		.info .close:hover {cursor: pointer;}
 		.info .body {position: relative;overflow: hidden;}
-		.info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+		.info .desc {position: relative;margin: 13px 0 0 13px;height: 75px;}
 		.desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 		.desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
 		.info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
@@ -42,9 +42,9 @@
 	border-left:none; border-right:none; border-bottom 3px solid black;}
 		#search {
     width:50px;
-    background-color: #f8585b;
+    background-color: #E6EDF5;
     border: none;
-    color:white;
+    color:#4F76A3;
     padding: 10px 0;
     text-align: center;
     text-decoration: none;
@@ -59,7 +59,7 @@
     display: inline-block;
     padding: 10px 0;
     border:1px;
-    color:#f8585b;
+    color:#4F76A3;
     cursor: pointer;
 }
 </style>
