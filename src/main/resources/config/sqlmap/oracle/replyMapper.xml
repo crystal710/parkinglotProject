@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reply.dao.ReplyDAO">
+
+	<insert id="insert" parameterType="ReplyVO" >
+		insert into Board(boardno, placeID, ranking, review,id)
+			values(tb_reply_seq.nextval,#{placeID}, #{ranking},#{review},#{id})
+	</insert>
+	
+	<!-- 해당게시물 댓글 조회 -->
+	<select id="selectAll" parameterType="ReplyVO" resultType="ReplyVO">
+		select b.placeID as placeID  , b.ranking as ranking , b.review as review , b.reg_date as reg_date , m.nickname as nickname ,b.id as id 
+			from Board b, Member m
+		where b.placeID= #{placeID} and m.id=b.id
+	</select>
+		<!-- 회원조회 -->
+	<select id="selectUserByPlaceID" parameterType="string" resultType="ReplyVO">
+		select placeID , ranking,review,reg_date,nickname,id 
+			from Board
+		where placeID= #{placeID}
+	</select>
+	
+	<!--  해당게시물 댓글 삭제 -->
+	<delete id="delete" parameterType="ReplyVO">
+		delete Board
+		where placeID=#{placeID}
+	</delete>
+ 	
+</mapper>

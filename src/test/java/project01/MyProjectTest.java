@@ -9,12 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.co.mlec.member.dao.MemberDAO;
-import kr.co.mlec.member.service.MemberService;
-import kr.co.mlec.member.vo.MemberVO;
 import kr.co.mlec.parking.dao.ParkingDAO;
 import kr.co.mlec.parking.service.ParkingService;
 import kr.co.mlec.parking.vo.ParkingVO;
+import kr.co.mlec.reply.dao.ReplyDAO;
+import kr.co.mlec.reply.service.ReplyService;
+import kr.co.mlec.reply.vo.ReplyVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring/spring-mvc.xml"})
@@ -24,24 +24,20 @@ public class MyProjectTest {
 	private ParkingService service;
 	
 	@Autowired
+	private ReplyService rservice;
+	
+	@Autowired
 	private ParkingDAO dao;
 	
-	@Autowired
-	private MemberDAO mdao;
-	@Autowired
-	private MemberService mservice;
+	@Autowired ReplyDAO rdao;
 	
 	@Test
-	public void sevice_회원조회() throws Exception{
-		MemberVO member = mservice.getUser("user");
-		System.out.println(member);
-	}
+	public void 댓글정보() throws Exception{
+		List<ReplyVO> list = rdao.selectAll("358-2-000001");
+		for(ReplyVO vo : list) {
+			System.out.println(vo);
+		}
 	
-	@Ignore
-	@Test
-	public void 회원조회() throws Exception{
-		MemberVO member = mdao.read("user");
-		System.out.println(member);
 	}
 	
 	@Ignore

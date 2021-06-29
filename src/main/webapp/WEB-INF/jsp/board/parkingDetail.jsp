@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +8,154 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/layout.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/board.css">
+
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+	#input1 {width:500px;height:50px;border-top :none;
+	border-left:none; border-right:none; border-bottom 3px solid black; }
+	#input2 {width:100px;height:50px;border-top :none; text-align:center;
+	border-left:none; border-right:none; border-bottom 3px solid black;}
+	#replyBtn {
+    width:100px;
+    background-color: #f8585b;
+    border: none;
+    color:white;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+}
+#replyBtn:hover{
+    background-color: white;
+    display: inline-block;
+    padding: 15px 0;
+    border:1px;
+    color:#f8585b;
+    cursor: pointer;
+}
+#golist{
+    width:70px;
+    background-color: #f8585b;
+    border: none;
+    color:white;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px;
+    cursor: pointer;
+}
+#golist:hover{
+    background-color: white;
+    display: inline-block;
+    padding: 15px 0;
+    border:1px;
+    color:#f8585b;
+    cursor: pointer;
+}
+
+/* 	#replyBtn {margin-reight:-4px; border:1px solid skyblue; background-color:rgba(0,0,0,0); color:skyblue;padding:5px}
+	#replyBtn button:hover{ color:white; background-color: skyblue; } */
+
+
+</style>
 <script>
 	function goList() {
 		location.href = "${ pageContext.request.contextPath}/parkingList";	
 	}
+	
+
+	//´ñ±Û ¸®½ºÆ®º¸±â
+	function getReplyList(){
 		
+		$('#replyList').empty()
+		
+		$.ajax({
+			url: '${pageContext.request.contextPath}/reply/${board.placeID}'
+			, success : function(responseData){
+				
+				//let replyList = JSON.parse(responseData)
+				let replyList=responseData;
+				for(let reply of replyList){
+					let data = '<hr>'
+					data += '<div>'
+					data += '<td>'+ reply.reg_date+'|' +'</td>'
+					data += '&nbsp;&nbsp;&nbsp;' + reply.review+'&nbsp;&nbsp;&nbsp;'+'|' +'</td>'
+					data += '&nbsp;'+"ÆòÁ¡"+'&nbsp;&nbsp;'+ reply.ranking+'|' +'</td>'
+					data += '<td>'+'&nbsp;&nbsp;&nbsp;' + reply.nickname+'&nbsp;&nbsp;&nbsp;'+'|' +'</td>'
+					data+='&nbsp;&nbsp;&nbsp;' +'<button id="golist" onclick="goDelete()">´ñ±Û»èÁ¦</button>'
+					data += '</div>'
+					$('#replyList').append(data)
+					
+				}
+				
+			}, error : function(){
+				alert('½ÇÆÐ')	
+			}
+		})
+	}
+
+	
+	$(document).ready(function(){
+		getReplyList()
+	})
+
+	
+	//´ñ±Û »èÁ¦
+		
+	//$(document).ready(function(){
+	//	$('#replydel').click(function(){
+	//		
+	//		$.ajax({url:'${pageContext.request.contextPath}/reply/delete/${board.placeID}'})
+	//		,success:function()
+	//		
+	//	}
+	//})
+	
+		function goDelete() {
+		if(confirm('´ñ±ÛÀ» »èÁ¦ÇÒ±î¿ä?')){
+			location.href = "${pageContext.request.contextPath}/reply/delete/${board.placeID}"
+		}
+	}
+		
+		function goUpdate() {
+			if(confirm('´ñ±ÛÀ» ¼öÁ¤ÇÒ±î¿ä?')){
+				location.href = "${pageContext.request.contextPath}/reply/update/${board.placeID}"
+			}
+		
+	}
+	
+	$(document).ready(function(){
+		$('#replyBtn').click(function(){
+			let review = document.replyForm.review
+			let ranking = document.replyForm.ranking
+			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/reply'
+				,type: 'post'
+				, data: {
+					review: review.value
+					, placeID : "${board.placeID}"
+					, ranking : ranking.value
+					
+				}, success: function(){
+					alert('´ñ±ÛÃß°¡ ¼º°ø')
+					getReplyList()
+					review.value=''
+					ranking.value=''
+				}, error : function(){
+					alert('´ñ±ÛÃß°¡ ½ÇÆÐ')
+				}
+			})
+		})
+	})
+	
 </script>
 </head>
 <body>
@@ -66,18 +209,31 @@
 				</td>
 			</tr>
 		</table>
-		<br><br>
-		<button onclick="goList()">¸ñ  ·Ï</button>
+		<br>
+		<button id="golist" onclick="goList()">¸ñ  ·Ï</button>
 		
-		<form name ="replyForm">
-			´ñ±Û :<input type="text" name ="content" size="50">
-			º°Á¡ :
-			ÀÌ¸§ :<input type ="text" name ="writer" size="10">
-			<input type ="button" value="´ñ±ÛÃß°¡" id="replyBtn">
-		</form>
+
+		<c:choose> 
+					<c:when test="${ empty userVO }">
+
+				 	</c:when>
+				 	<c:otherwise>
+						<form name ="replyForm">
+							<input id="input1" type="text" name ="review" placeholder="´ñ±ÛÀ» ÀÔ·ÂÇÏ¼¼¿ä" size="40">
+							<input id="input2" type ="number" name="ranking" placeholder="ÆòÁ¡" min="1" max="5">
+							<input type ="button" value="´ñ±ÛÃß°¡" id="replyBtn">
+							</div>
+						</form>
+					</c:otherwise>
+				</c:choose>
 		
 		<div id="replyList" >
 		</div>
+		
+		
+		
+		
+
 		
 	</div>
 	</section>

@@ -34,7 +34,35 @@
 			text-align: center
 		}
 	</style>
+	<style>
 	
+		#input1 {width:300px;height:50px;border-top :none;
+	border-left:none; border-right:none; border-bottom 3px solid black; }
+	#input2 {width:100px;height:50px;border-top :none; text-align:center;
+	border-left:none; border-right:none; border-bottom 3px solid black;}
+		#search {
+    width:50px;
+    background-color: #f8585b;
+    border: none;
+    color:white;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px;
+    cursor: pointer;
+ 
+}
+#search:hover{
+    background-color: white;
+    display: inline-block;
+    padding: 10px 0;
+    border:1px;
+    color:#f8585b;
+    cursor: pointer;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -68,12 +96,9 @@
     // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
     
     $.get("/map/map", function(data) {
-    	console.log("data:"+data);
-    	console.log("data.positions:"+data.positions);
         // 데이터에서 좌표 값을 가지고 마커를 표시합니다
         // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
         var markers = $(data.positions).map(function(i, position) {
-        	console.log("position = "+ position);
         	
             var marker = new kakao.maps.Marker({
                 position : new kakao.maps.LatLng(position.lat, position.lng),
@@ -90,7 +115,6 @@
 		                    position: new kakao.maps.LatLng(position.lat, position.lng)      
 	                        });
                             overlay.setMap(null);
-                            console.log("position.roadAddr :"+position.roadAddr);
                             
                 // console.log("marker:"+marker);
                 // console.log("marker.getPosition:"+marker.getPosition());
@@ -332,14 +356,14 @@
 	<!-- search{s} -->
 
 		<form action ="searchParkingList" method="post" align="center">
-			<select name="searchType">
+			<select id="input2" name="searchType">
 					<option value="addr">지역</option>
 					<option value="lotType1">주차장 타입</option>
 					<option value="parkingLotName">주차장 이름</option>
 					<option value="payment">주차장 요금</option>
 				</select>
-				<input type="text"name="keyword" style="width: 60%">
-				<input type="submit" value="검색"/>
+				<input id="input1" type="text"name="keyword">
+				<input id="search" type="submit" value="검색"/>
 		</form>
 
 		<!-- search{e} -->

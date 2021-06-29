@@ -13,6 +13,29 @@
 		location.href="${ pageContext.request.contextPath}/updateUserForm";
 	}
 </script>
+<style>
+#btn{
+    width:70px;
+    background-color: #f8585b;
+    border: none;
+    color:white;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px;
+    cursor: pointer;
+}
+#btn:hover{
+    background-color: white;
+    display: inline-block;
+    padding: 15px 0;
+    border:1px;
+    color:#f8585b;
+    cursor: pointer;
+}
+</style>
 </head>
 <body>
 <header>
@@ -60,7 +83,7 @@
 				</tr>
 			</table>
 			<br>
-			<button type="button" onclick="javascript:goUpdate()">수정</button>
+			<button id="btn" type="button" onclick="javascript:goUpdate()">수정</button>
 		</h2>
 	</div>
 </section>

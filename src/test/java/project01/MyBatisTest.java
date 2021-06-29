@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.co.mlec.member.vo.MemberVO;
 import kr.co.mlec.parking.vo.ParkingVO;
+import kr.co.mlec.reply.vo.ReplyVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring/spring-mvc.xml"})
@@ -25,14 +25,13 @@ public class MyBatisTest {
 	@Autowired
 	private DataSource ds;
 	
-	
-	
 	@Test
-	public void 회원조회() throws Exception{
-		MemberVO member= sqlSession.selectOne("member.dao.MemberDAO.selectUserById", "user");
-		System.out.println(member);
+	public void 댓글테스트() throws Exception{
+		List<ReplyVO> list = sqlSession.selectList("reply.dao.ReplyDAO.selectAll","	358-2-000001");
+		for(ReplyVO vo : list) {
+			System.out.println(vo);
+		}
 	}
-
 	
 	@Ignore
 	@Test

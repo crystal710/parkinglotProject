@@ -47,12 +47,9 @@
     // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
     
     $.get("/map/map", function(data) {
-    	console.log("data:"+data);
-    	console.log("data.positions:"+data.positions);
         // 데이터에서 좌표 값을 가지고 마커를 표시합니다
         // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
         var markers = $(data.positions).map(function(i, position) {
-        	console.log("position = "+ position);
         	
             var marker = new kakao.maps.Marker({
                 position : new kakao.maps.LatLng(position.lat, position.lng),
@@ -69,7 +66,6 @@
 		                    position: new kakao.maps.LatLng(position.lat, position.lng)      
 	                        });
                             overlay.setMap(null);
-                            console.log("position.roadAddr :"+position.roadAddr);
                             
                 // console.log("marker:"+marker);
                 // console.log("marker.getPosition:"+marker.getPosition());
